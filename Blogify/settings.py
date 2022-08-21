@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1e_xhu59@@(zg4v5u1afpx2k+l@vy@&-6ovaqyh(v9fcm%stj+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['blogify-webapp.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['blogify-webapp.herokuapp.com','127.0.0.1','0.0.0.0:8000']
 
 
 # Application definition
@@ -90,7 +90,7 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
      'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -180,3 +180,11 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import django_heroku
+# Then all the way at the bottom of the file
+# ....
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+import dj_database_url
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
+django_heroku.settings(locals())
