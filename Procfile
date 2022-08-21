@@ -1,8 +1,1 @@
-web: waitress-serve \
-    --listen "*:8000 \
-    --trusted-proxy '*' \
-    --trusted-proxy-headers 'x-forwarded-for x-forwarded-proto x-forwarded-port' \
-    --log-untrusted-proxy-headers \
-    --clear-untrusted-proxy-headers \
-    --threads ${WEB_CONCURRENCY:-4} \
-    Blogify:wsgifunc
+web: waitress-serve --port=8000 --threads=3 --asyncore-use-poll --backlog=4096 Blogify.wsgi:application
