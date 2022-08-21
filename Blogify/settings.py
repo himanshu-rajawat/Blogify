@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1e_xhu59@@(zg4v5u1afpx2k+l@vy@&-6ovaqyh(v9fcm%stj+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blogify-webapp.herokuapp.com','127.0.0.1']
 
 
 # Application definition
