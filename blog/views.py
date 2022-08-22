@@ -95,11 +95,14 @@ def addreadlater(request):
         data['user'] = request.user.id
         serializer = AddReadLaterSerializer(data=data)
         if serializer.is_valid():
-            readlater = Readlater.objects.create(
-            user=serializer.validated_data['user'],
-            post = serializer.validated_data['post'])
-            readlater.save()
-            return Response({"response":"post added to read later section"})
+            try:
+                readlater = Readlater.objects.create(
+                user=serializer.validated_data['user'],
+                post = serializer.validated_data['post'])
+                readlater.save()
+                return Response({"response":"post added to read later section"})
+            except:
+                return Response({"response":"entry already exist"},status=status.HTTP_409_CONFLICT)
         else:
             return Response({"response":"data format is incorrect"},status=status.HTTP_400_BAD_REQUEST)
 
