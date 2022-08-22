@@ -102,7 +102,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
   'http://localhost:8080',
-  'blogify-application.web.app',
+  'https://blogify-application.web.app',
 )
 
 ROOT_URLCONF = 'Blogify.urls'
