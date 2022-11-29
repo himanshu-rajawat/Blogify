@@ -9,6 +9,18 @@ from .serializers import PostSerializer, PostCreatetSerializer, AddReadLaterSeri
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from itertools import chain
 from django.contrib.auth.models import User
+import logging
+import boto3
+from botocore.exceptions import ClientError
+import json
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def output(request):
+    output = request.body
+    my_json = output.decode('utf8').replace("'", '"')
+    print(my_json)
+    return Response('success', status=status.HTTP_200_OK)
 
 # Create your views here.
 @api_view(['GET'])
@@ -66,14 +78,19 @@ def explore(request):
 @permission_classes([IsAuthenticated])
 def createpost(request):
     if request.method == 'POST':
-           data= request.data
-           data["author"] = request.user.id
-           serializer = PostCreatetSerializer(data=data)
-           if serializer.is_valid():
-               post = serializer.create(serializer.validated_data)
-               return Response({"response":"Post uploaded"})
-           else:
-               return Response(serializer.errors)
+        # print(request.data)
+        data= request.data
+        print(data["content"])
+        # data["content"] = output.decode('utf8')
+        # print(request.data.content.encode('utf8'))
+        data["author"] = request.user.id
+        serializer = PostCreatetSerializer(data=data)
+        if serializer.is_valid():
+            post = serializer.create(serializer.validated_data)
+            print(post)
+            return Response({"response":"Post uploaded"})
+        else:
+            return Response(serializer.errors)
 
 
 @api_view(['POST'])

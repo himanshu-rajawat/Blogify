@@ -13,5 +13,6 @@ urlpatterns = [
     path('getreadlater/',views.getreadlater,name="getreadlater"),
     path('unfollow/<int:id>/',views.unfollow,name="unfollow"),
     path('follow/',views.follow,name="follow"),
+    path('output/',views.output,name="output"),
 
 ]

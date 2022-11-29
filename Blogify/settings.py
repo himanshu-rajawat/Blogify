@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders'
+    'corsheaders',
+    'storages'
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -99,7 +100,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
   'http://localhost:8080',
   'https://blogify-application.web.app',
@@ -131,12 +132,21 @@ WSGI_APPLICATION = 'Blogify.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blogify',
+        'USER': 'root',
+        'PASSWORD': 'test1234',
+        'HOST':'frazor-testdb.cwowgpm6kuqt.ap-south-1.rds.amazonaws.com',
+        'PORT':'3306',
     }
 }
 
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -154,6 +164,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+#s3 VBUCKET COngif
+AWS_ACCESS_KEY_ID = 'AKIATVILSDKCKAWE6KVS'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'frazor-demo-training'
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_SIGNATURE_VERSION= 's3v4'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 # Internationalization
