@@ -1,26 +1,38 @@
 # Blogify
-click on below blogify-logo to visit our website:
 
-<a href="https://blogify-application.web.app/">
-<img style="height:80px;width:auto;" alt="visit website" src="https://blogify-application.web.app/img/blogify_logo.acfb6c5c.png"/> 
-</a>
+[![Blogify Logo](https://blogify-application.web.app/img/blogify_logo.acfb6c5c.png)](https://blogify-application.web.app)
 
+A blogging platform built using Django and Vue.js, with features such as user authentication using JWT, following and liking other users' posts, saving posts for later reading, and using AWS S3 bucket to store media files. 
 
-### Description
-Blogify is a blogging website built using Python Django framework (for backend development), vue.js framework for frontend developemnt.
+## Key Features
+- User authentication using JWT
+- Ability to follow and like other users' posts
+- Option to save posts for later reading
+- AWS S3 bucket to store media files
+- Single-page application using Vue components and Vue Router
+- REST APIs implemented using Django REST framework for CRUD operations
 
-### Usage
-setting up the Django project:
-* clone project from this repo using "git clone <repo>" command.
-* create and start a virtual environment.
-* after starting virtual environment and changing dir to our projects BASE dir, run command "pip install -r requirements.txt" (to install all dependencies).
-* run these commmands to make migrations (ensure that sqlite is installed on your system)
-python manage.py makemigrations
-python manage.py migrate
-* run command "python manage.py runserver" to start django server.
+## Requirements
+- Python 3.x
+- Django 3.x
+- Vue.js 2.x
 
-setting up the vue project:
-* clone project from Blogify-frontend repo.
-* ensure that npm is installed on your system.
-* change urls for django app, in app the vue-components.
-* run command "npm runserve" to start vue app.
+## Setup
+
+### Django Project
+1. Clone the repository: `git clone <repo>`
+2. Create and start a virtual environment
+3. Install dependencies: `pip install -r requirements.txt`
+4. Run migrations: 
+    - `python manage.py makemigrations`
+    - `python manage.py migrate`
+5. Start the Django server: `python manage.py runserver`
+
+### Vue.js Project
+1. Clone the repository: `git clone <repo>`
+2. Ensure that npm is installed on your system
+3. Update URLs for the Django app in the Vue components
+4. Start the Vue app: `npm runserve`
+
+## Contributing
+Feel free to fork the repository and make a pull request if you want to contribute to this project.
