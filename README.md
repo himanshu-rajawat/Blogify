@@ -1,6 +1,10 @@
 # Blogify
 
-[![Blogify Logo](https://blogify-application.web.app/img/blogify_logo.acfb6c5c.png)](https://blogify-application.web.app)
+<p align="left">
+  <a href="https://blogify-application.web.app/">
+    <img style="height:150px;width:auto;" alt="visit website" src="https://blogify-application.web.app/img/blogify_logo.acfb6c5c.png"/> 
+  </a>
+</p>
 
 A blogging platform built using Django and Vue.js, with features such as user authentication using JWT, following and liking other users' posts, saving posts for later reading, and using AWS S3 bucket to store media files. 
 
